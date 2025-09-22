@@ -1,9 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import dotenv from "dotenv"
-dotenv.config()
+
 export const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.BACKEND_URL}/api`,
+    baseUrl: `${import.meta.env.BACKEND_URL}/api`,
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {
